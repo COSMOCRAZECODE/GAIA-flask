@@ -1,0 +1,76 @@
+<!-- inside your updated home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GAIA Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .profile-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+        }
+        .big-button {
+            font-size: 1.25rem;
+            padding: 15px 30px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">GAIA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/carbon-calculator" target="_blank">GAIA APP</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+
+            {% if username %}
+            <div class="d-flex align-items-center">
+                <span class="profile-icon me-2">{{ username[0] | upper }}</span>
+                <a href="/logout" class="btn btn-sm btn-outline-light">Logout</a>
+            </div>
+            {% else %}
+            <div class="d-flex align-items-center">
+                <a href="/login-signup" class="btn btn-sm btn-outline-light">Login / Signup</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    {% if username %}
+        <h1 class="mt-5">Welcome, {{ username }}!</h1>
+        <p class="lead">You're logged in. Explore GAIA’s features using the navigation bar above.</p>
+        <a href="/carbon-calculator" class="btn btn-primary big-button" target="_blank">GAIA APP</a>
+    {% else %}
+        <h1 class="mt-5">Welcome to GAIA</h1>
+        <p class="lead">Please login or sign up to explore GAIA’s features.</p>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

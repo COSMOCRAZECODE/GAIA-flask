@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='../static/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2 id="form-title">Login</h2>
+    
+    <form method="POST" action="/login" id="login-form">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <form method="POST" action="/signup" id="signup-form" style="display: none;">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p id="toggle-text">Don't have an account? <a href="#" onclick="toggleForms()">Sign up</a></p>
+  </div>
+
+  <script>
+    function toggleForms() {
+      const loginForm = document.getElementById("login-form");
+      const signupForm = document.getElementById("signup-form");
+      const title = document.getElementById("form-title");
+      const toggle = document.getElementById("toggle-text");
+
+      if (loginForm.style.display === "none") {
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+        title.innerText = "Login";
+        toggle.innerHTML = `Don't have an account? <a href="#" onclick="toggleForms()">Sign up</a>`;
+      } else {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        title.innerText = "Sign Up";
+        toggle.innerHTML = `Already have an account? <a href="#" onclick="toggleForms()">Login</a>`;
+      }
+    }
+  </script>
+</body>
+</html>
