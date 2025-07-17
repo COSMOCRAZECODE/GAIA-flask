@@ -82,8 +82,6 @@ def login():
 @auth_bp.route("/logout")
 def logout():
     session.clear()
-    if os.path.exists(SESSION_TOKEN_FILE):
-        os.remove(SESSION_TOKEN_FILE)
     return redirect(url_for("auth.index"))
 
 @auth_bp.route("/carbon-calculator")
