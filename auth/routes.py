@@ -97,16 +97,6 @@ def launch_streamlit():
 @auth_bp.route("/logout-and-close")
 def logout_and_close():
     session.clear()
-    if os.path.exists(SESSION_TOKEN_FILE):
-        os.remove(SESSION_TOKEN_FILE)
-
-    for proc in psutil.process_iter(attrs=["pid", "name", "cmdline"]):
-        try:
-            if "streamlit" in proc.info["cmdline"]:
-                proc.kill()
-        except Exception:
-            continue
-
     return redirect("/")
 
 @auth_bp.route("/login-signup")
