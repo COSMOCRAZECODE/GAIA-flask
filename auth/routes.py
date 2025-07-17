@@ -92,7 +92,7 @@ def launch_streamlit():
         return redirect(url_for("auth.login_signup_page"))
 
     # Pass token in URL to Streamlit app
-    return redirect(f"https://your-streamlit-app.onrender.com?token={session['token']}", code=302)
+    return redirect(f"https://gaia-streamlit.onrender.com?token={session['token']}", code=302)
 
 @auth_bp.route("/logout-and-close")
 def logout_and_close():
