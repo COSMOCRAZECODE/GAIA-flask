@@ -97,7 +97,7 @@ def launch_streamlit():
 @auth_bp.route("/logout-and-close")
 def logout_and_close():
     session.clear()
-    return redirect("/")
+    return redirect("auth.index")
 
 @auth_bp.route("/login-signup")
 def login_signup_page():
